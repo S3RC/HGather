@@ -1,5 +1,5 @@
 acorn:10
-bone chip:80
+bone chip:33
 arrowwood log:10
 holly log:10
 king truffle:10
@@ -12,27 +12,27 @@ willow log:10
 fire crystal:10
 ice crystal:10
 wind crystal:10
-earth crystal:10
+earth crystal:25
 lightning crystal:10
 water crystal:10
 light crystal:10
 dark crystal:10
-fire cluster:10
+fire cluster:67
 water cluster:10
-earth cluster:10
+earth cluster:667
 wind cluster:10
 ice cluster:10
 lightning cluster:10
 light cluster:10
 dark cluster:10
-fire ore:10
-earth ore:10
-water ore:10
-wind ore:10
-ice ore:10
-lightning ore:10
-light ore:10
-dark ore:10
+chunk of fire ore:10
+chunk of earth ore:10
+chunk of water ore:10
+chunk of wind ore:10
+chunk of ice ore:10
+chunk of lightning ore:10
+chunk of light ore:10
+chunk of dark ore:10
 elm log:10
 lacquer tree log:10
 mahogany log:10
@@ -44,43 +44,43 @@ hard-boiled egg:10
 sairui-ran:10
 soft-boiled egg:10
 bird feather:10
-coral fragment:10
-giant femur:10
+coral fragment:4167
+giant femur:500
 lugworm:10
-platinum ore:10
+chunk of platinum ore:5833
 seashell:10
 shall shell:10
 shell bug:10
-tin ore:10
+chunk of tin ore:10
 turtle shell:10
 black chocobo feather:10
-giant bird plume:10
+giant bird plume:3333
 phoenix feather:10
 red moko grass:10
 spider web:10
 demon horn:10
 demon skull:10
 dragon scales:10
-fish scales:10
+handful of fish scales:33
 high-quality pugil scales:10
 titanictus shell:10
-wyvern scales:4000
-adaman ore:10
+handful of wyvern scales:3500
+chunk of adaman ore:10
 ebony log:10
 moko grass:10
-pebble:10
+pebble:6
 pephredo hive chip:10
 pine nuts:10
-aluminum ore:10
+chunk of aluminum ore:10
 flint stone:10
-gold ore:10
+chunk of gold ore:5000
 kaolin:10
-orichalcum ore:10
+chunk of orichalcum ore:10
 colibri feather:10
 dried marjoram:10
 lesser chigoe:10
 petrified log:10
-darksteel ore:10
+chunk of darksteel ore:4083
 ash log:10
 chocobo feather:10
 ronfaure chestnut:10
@@ -90,7 +90,7 @@ chamomile:10
 ginger:10
 vegetable seeds:10
 fruit seeds:10
-zinc ore:250
+chunk of zinc ore:192
 pie dough:10
 napa:10
 yellow ginseng:10
@@ -105,8 +105,8 @@ purple rock:10
 white rock:10
 black rock:10
 lizard molt:10
-copper ore:10
-iron ore:10
+chunk of copper ore:10
+chunk of iron ore:708
 red jar:10
 reishi mushroom:10
 beastcoin:10
@@ -115,7 +115,7 @@ mythril beastcoin:10
 silver beastcoin:10
 insect wing:10
 pugil scales:10
-mythril ore:10
+chunk of mythril ore:1583
 cactus stems:10
 rock salt:10
 grain seeds:10
@@ -127,15 +127,15 @@ sage:200
 danceshroom:10
 sleepshroom:10
 woozyshroom:10
-silver ore:10
-philosopher's stone:10
+chunk of silver ore:500
+philosopher's stone:12500
 herb seeds:10
 lauan log:10
 yagudo feather:10
 saruta cotton:10
 papaka grass:10
 platinum beastcoin:10
-kopparnickel ore:10
+chunk of kopparnickel ore:10
 ancient lumber:10
 stick of cinnamon:10
 piece of rattan lumber:10
