@@ -11,6 +11,8 @@ This is my personal fork which contains some cleanup of code and also some modif
 
 /hgather update - Updates the pricing for items based on the itempricing.txt file
 
+/hgather report - Prints the dig data to chatlog
+
 /hgather reset - Resets the digging data
 
 ## Pricing
