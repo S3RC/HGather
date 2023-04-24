@@ -115,12 +115,16 @@ function reportSession()
             itemTotal = v * hgather.pricing[k];
         end
 
+        -- Remove the extra text from item names to simplify item display
         if (string.sub(k,1,9) == "chunk of ") then
             k = string.sub(k,10,-1);
         elseif (string.sub(k,1,11) == "handful of ") then
             k = string.sub(k,12,-1);
+        elseif (string.sub(k,1,9) == "stick of " or string.sub(k,1,9) == "piece of ") then
+            k = string.sub(k,10,-1);
         end
 
+        -- Capitalises the first letter of the item name
         k = k:gsub("^%l", string.upper);
 
         print(k + ": " + "x" + v + " (" + itemTotal + "g)");
@@ -129,6 +133,7 @@ function reportSession()
     print('----------');
     print("Gil Made: " + totalWorth + 'g');
 
+    -- Calculate the profit made by subtracting gysahl green cost
     totalProfit = totalWorth - hgather.numDigs*62;
 
     print("Total Profit: " + totalProfit + "g");
@@ -354,12 +359,16 @@ ashita.events.register('d3d_present', 'present_cb', function ()
                 itemTotal = v * hgather.pricing[k];
             end
 
+            -- Remove the extra text from item names to simplify item display
             if (string.sub(k,1,9) == "chunk of ") then
                 k = string.sub(k,10,-1);
             elseif (string.sub(k,1,11) == "handful of ") then
                 k = string.sub(k,12,-1);
+            elseif (string.sub(k,1,9) == "stick of " or string.sub(k,1,9) == "piece of ") then
+                k = string.sub(k,10,-1);
             end
 
+            -- Capitalises the first letter of the item name
             k = k:gsub("^%l", string.upper);
                 
             imgui.Text(k + ": " + "x" + v + " (" + itemTotal + "g)");
@@ -369,6 +378,7 @@ ashita.events.register('d3d_present', 'present_cb', function ()
         gilHour = math.floor((totalWorth / (elapsedTime / 1000.0)) * 3600); 
         imgui.Text("Gil Made: " + totalWorth + "g" + " (" + gilHour + " gph)");
 
+        -- Calculate the profit made by subtracting gysahl green cost
         totalProfit = totalWorth - hgather.numDigs*62;
         profitHour = math.floor((totalProfit / (elapsedTime / 1000.0)) * 3600);
 
