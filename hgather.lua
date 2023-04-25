@@ -30,6 +30,7 @@ hgather = T{
     numDigs = 0,
     numItems = 0,
     skillUp = 0.0,
+    totalSkill = 0.0,
     firstDig = 0,
     lastDig = ashita.time.clock()['ms'],
     diggingRewards = { },
@@ -104,7 +105,7 @@ function reportSession()
     print('Dig Accuracy: ' + string.format('%.2f', accuracy) + '%%');
     --Only show skillup line if one was seen during session
     if (hgather.skillUp ~= 0.0) then
-        print('Skillups: ' + string.format('%.1f', hgather.skillUp));
+        print('Skillups: ' + string.format('%.1f', hgather.skillUp) + ' (Skill: ' + string.format('%.1f', hgather.totalSkill) + ')');
     end
     print('----------');
 
@@ -185,6 +186,7 @@ ashita.events.register('text_out', 'text_out_callback1', function (e)
             hgather.isAttempt = 0;
             hgather.numItems = 0;
             hgather.skillUp = 0.0;
+            hgather.totalSkill = 0.0;
             hgather.numDigs = 0;
             print('HGather: Digging session has been reset');
         end
@@ -236,7 +238,7 @@ ashita.events.register('text_in', 'text_in_cb', function (e)
     success = string.match(message, "obtained: (.*).") or successBreak;
     unable = string.contains(message, "you dig and you dig");
     skillUp = string.match(message, "skill increases by (.*) raising");
-	
+
     -- only set isAttempt if we dug within last 60 seconds
     if ((success or unable) and lastDigSecs < 60) then
         hgather.isAttempt = true;
@@ -247,6 +249,8 @@ ashita.events.register('text_in', 'text_in_cb', function (e)
     --skillup count
     if (skillUp) then
         hgather.skillUp = hgather.skillUp + skillUp;
+        totalSkill = string.match(message, "raising it to (.*)!");
+        hgather.totalSkill = totalSkill;
     end
 
     if hgather.isAttempt then 
@@ -348,7 +352,7 @@ ashita.events.register('d3d_present', 'present_cb', function ()
         imgui.Text('Moon: ' + moonPhase + ' ('+ moonPercent + '%%)');
         --Only show skillup line if one was seen during session
         if (hgather.skillUp ~= 0.0) then
-            imgui.Text('Skillups: ' + string.format('%.1f', hgather.skillUp));
+            imgui.Text('Skillups: ' + string.format('%.1f', hgather.skillUp) + ' (Skill: ' + string.format('%.1f', hgather.totalSkill) + ')');
         end
         imgui.Separator();
 
