@@ -136,7 +136,7 @@ function reportSession()
     -- Calculate the profit made by subtracting gysahl green cost
     totalProfit = totalWorth - hgather.numDigs*62;
 
-    print("Total Profit: " + totalProfit + "g");
+    print("Profit Made: " + totalProfit + "g");
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -382,7 +382,7 @@ ashita.events.register('d3d_present', 'present_cb', function ()
         totalProfit = totalWorth - hgather.numDigs*62;
         profitHour = math.floor((totalProfit / (elapsedTime / 1000.0)) * 3600);
 
-        imgui.Text("Total Profit: " + totalProfit + "g" + " (" + profitHour + " gph)");
+        imgui.Text("Profit Made: " + totalProfit + "g" + " (" + profitHour + " gph)");
 
         --List things gotten for digging session
     end
