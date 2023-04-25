@@ -244,16 +244,16 @@ ashita.events.register('text_in', 'text_in_cb', function (e)
         hgather.isAttempt = false;
     end
    
-    --skillup count
-    if (skillUp) then
-        hgather.skillUp = hgather.skillUp + skillUp;
-
-        -- Get total chocobo digging skill
-        totalSkill = string.match(message, "raising it to (.*)!");
-        hgather.totalSkill = totalSkill;
-    end
-
     if hgather.isAttempt then 
+        --skillup count
+        if (skillUp) then
+            hgather.skillUp = hgather.skillUp + skillUp;
+
+            -- Get total chocobo digging skill
+            totalSkill = string.match(message, "raising it to (.*)!");
+            hgather.totalSkill = totalSkill;
+        end
+
         successBreak = false;
         success = string.match(message, "obtained: (.*).") or successBreak;
         unable = string.contains(message, "you dig and you dig");
