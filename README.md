@@ -27,4 +27,4 @@ This would price pebbles at 100g.  Make sure there are no spaces in any of the l
 If you update the prices while in game, make sure to use the **/hgather update** command to update the prices.
 
 Note: The itemname in the file must match the lowercase full name of the item in-game, e.g. chunk of wyvern scales or handful of fish scales
-
+(I only dig in the desert so items from other zones might not have this implemented yet in itempricing.txt)

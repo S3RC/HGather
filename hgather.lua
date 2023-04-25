@@ -1,7 +1,7 @@
 addon.name = 'hgather';
 addon.description = 'Simple dig tracker.';
-addon.author = 'Hastega';
-addon.version = '1.1.1';
+addon.author = 'Hastega (+ S3RC)';
+addon.version = '1.1.1 (S3RC.B)';
 addon.commands = {'/hgather'};
 
 ----------------------------------------------------------------------------------------------------
@@ -117,12 +117,9 @@ function reportSession()
         end
 
         -- Remove the extra text from item names to simplify item display
-        if (string.sub(k,1,9) == "chunk of ") then
-            k = string.sub(k,10,-1);
-        elseif (string.sub(k,1,11) == "handful of ") then
-            k = string.sub(k,12,-1);
-        elseif (string.sub(k,1,9) == "stick of " or string.sub(k,1,9) == "piece of ") then
-            k = string.sub(k,10,-1);
+        ofStart, ofEnd = string.find(k, " of ");
+        if (ofStart ~= nil) then
+            k = string.sub(k, ofEnd + 1 , -1);
         end
 
         -- Capitalises the first letter of the item name
@@ -137,7 +134,7 @@ function reportSession()
     -- Calculate the profit made by subtracting gysahl green cost
     totalProfit = totalWorth - hgather.numDigs*62;
 
-    print("Profit Made: " + totalProfit + "g");
+    print("Profit Made: " + totalProfit + 'g');
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -188,6 +185,7 @@ ashita.events.register('text_out', 'text_out_callback1', function (e)
             hgather.skillUp = 0.0;
             hgather.totalSkill = 0.0;
             hgather.numDigs = 0;
+            hgather.firstDig = 0;
             print('HGather: Digging session has been reset');
         end
     end
@@ -249,6 +247,8 @@ ashita.events.register('text_in', 'text_in_cb', function (e)
     --skillup count
     if (skillUp) then
         hgather.skillUp = hgather.skillUp + skillUp;
+
+        -- Get total chocobo digging skill
         totalSkill = string.match(message, "raising it to (.*)!");
         hgather.totalSkill = totalSkill;
     end
@@ -364,12 +364,9 @@ ashita.events.register('d3d_present', 'present_cb', function ()
             end
 
             -- Remove the extra text from item names to simplify item display
-            if (string.sub(k,1,9) == "chunk of ") then
-                k = string.sub(k,10,-1);
-            elseif (string.sub(k,1,11) == "handful of ") then
-                k = string.sub(k,12,-1);
-            elseif (string.sub(k,1,9) == "stick of " or string.sub(k,1,9) == "piece of ") then
-                k = string.sub(k,10,-1);
+            ofStart, ofEnd = string.find(k, " of ");
+            if (ofStart ~= nil) then
+                k = string.sub(k, ofEnd + 1 , -1);
             end
 
             -- Capitalises the first letter of the item name
@@ -379,14 +376,14 @@ ashita.events.register('d3d_present', 'present_cb', function ()
         end
 
         imgui.Separator();
-        gilHour = math.floor((totalWorth / (elapsedTime / 1000.0)) * 3600); 
-        imgui.Text("Gil Made: " + totalWorth + "g" + " (" + gilHour + " gph)");
+        gilHour = math.floor(((totalWorth / (elapsedTime / 1000.0)) * 3600) / 1000);
+        imgui.Text("Gil Made: " + totalWorth + "g" + " (" + gilHour + "k gph)");
 
         -- Calculate the profit made by subtracting gysahl green cost
-        totalProfit = totalWorth - hgather.numDigs*62;
-        profitHour = math.floor((totalProfit / (elapsedTime / 1000.0)) * 3600);
+        totalProfit = totalWorth - hgather.numDigs * 62;
+        profitHour = math.floor(((totalProfit / (elapsedTime / 1000.0)) * 3600) / 1000);
 
-        imgui.Text("Profit Made: " + totalProfit + "g" + " (" + profitHour + " gph)");
+        imgui.Text("Profit Made: " + totalProfit + "g" + " (" + profitHour + "k gph)");
 
         --List things gotten for digging session
     end
