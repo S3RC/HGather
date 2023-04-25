@@ -1,8 +1,6 @@
 # HGather
 This is a simple dig tracker for FFXI. This addon works with Ashita v4. 
 
-# Fork
-This is my personal fork which contains some cleanup of code and also some modifications and additions that I personallly like to have.
 
 ## Commands
 /hgather open - Opens the window showing dig data
